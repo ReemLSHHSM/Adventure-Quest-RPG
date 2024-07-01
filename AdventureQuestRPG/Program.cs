@@ -23,6 +23,7 @@ namespace AdventureQuestRPG
             Player player = new Player(playerName, 100, 20, 10);
             Monster enemy = ChooseRandomMonster();
 
+
             BattleSystem.StartBattle(player, enemy);
 
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -62,15 +63,26 @@ namespace AdventureQuestRPG
             Random random = new Random();
             int choice = random.Next(0, 3); // 0 1 2
 
+            Console.ForegroundColor = ConsoleColor.Magenta;
+
+            Console.WriteLine($"========================================");
             switch (choice)
             {
                 case 0:
+                    Console.WriteLine($"You will be fighting Goblin");
+                    Console.WriteLine($"========================================");
                     return new Goblin();
                 case 1:
+                    Console.WriteLine($"You will be fighting Zombie");
+                    Console.WriteLine($"========================================");
                     return new Zombie();
                 case 2:
+                    Console.WriteLine($"You will be fighting Skullton");
+                    Console.WriteLine($"========================================");
                     return new Skullton();
                 default:
+                    Console.WriteLine($"You will be fighting Goblin");
+                    Console.WriteLine($"========================================");
                     return new Goblin(); // Default case
             }
         }
