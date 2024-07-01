@@ -1,4 +1,6 @@
-﻿namespace AdventureQuestRPG
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace AdventureQuestRPG
 {
     internal class Program
     {
