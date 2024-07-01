@@ -9,20 +9,31 @@ namespace AdventureQuestRPG
     internal class BattleSystem
     {
 
-        public int Attack(int target_defence,int enemy_attackpower,int target_health,string target_name,string enemy_name)
+        public int Attack(dynamic attacker,dynamic target)
         {
-            int damage = target_defence - enemy_attackpower;
-            target_health-=damage;
 
-            if (target_health< 0) {
-            
-            target_health = 0;
+            int damage;
+            if (target.Defense > attacker.AttackPower)
+            {
+                damage = /*target.Defense -*/ attacker.AttackPower;
+                target.Health -= damage;
+            }
+            else
+            {
+                damage =target.Defense;
+                target.Health -= damage;
             }
 
-            Console.WriteLine($"{enemy_name} damaged {target_name} by {damage} points {target_name}'s health is now {target_health}");
-            
+            if (target.Health < 0)
+            {
+
+                target.Health = 0;
+            }
+
+            Console.WriteLine($"{attacker.Name} damaged {target.Name} by {damage} points {target.Name}'s health is now {target.Health}");
+
             Console.WriteLine("=======================================");
-            return target_health;
+            return target.Health;
         }
     }
 }
