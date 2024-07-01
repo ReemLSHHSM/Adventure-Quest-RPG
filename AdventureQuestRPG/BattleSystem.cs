@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdventureQuestRPG
 {
-    internal class BattleSystem
+    public class BattleSystem
     {
 
         public static int Attack(dynamic attacker,dynamic target)
@@ -60,6 +60,7 @@ namespace AdventureQuestRPG
                 if (player.Health <= 0)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("K.O");
                     Console.WriteLine("You have been defeated!");
                     Console.ForegroundColor = ConsoleColor.White;
                     break;

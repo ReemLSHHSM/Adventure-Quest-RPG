@@ -43,15 +43,15 @@ namespace AdventureQuestRPG
 
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 name = Console.ReadLine();
-
-                if (!String.IsNullOrEmpty(name))
+                bool test_name = Int32.TryParse(name, out int num_name);
+                if (!String.IsNullOrEmpty(name) && test_name==false)
                 {
                     return name;
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Your name shouldn't be empty!");
+                    Console.WriteLine("Your name should neither be empty nor a number!");
                     Console.ForegroundColor = ConsoleColor.Yellow;
                 }
             }
