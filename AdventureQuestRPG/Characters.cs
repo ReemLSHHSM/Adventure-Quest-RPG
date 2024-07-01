@@ -14,20 +14,18 @@ namespace AdventureQuestRPG
         //fields are a must when creating a constructor
 
         //constructor
-        public Player(string name = "Unknown Hero", int health = 100, int defense = 30, int attackPower = 10)//i put them here so when the object is made it doesnt require that i add arguments
+        public Player(string name, int health = 100, int defense = 30, int attackPower = 10)//i put them here so when the object is made it doesnt require that i add arguments
         {
-            this.name = name;
-            this.health = health;
-            this.defense = defense;
-            this.attackpower = attackPower;
+            Name = name;
+            Health = health;
+            Defense = defense;
+            AttackPower = attackPower;
 
         }
 
 
-
-
         //Properties with default values
-        public string Name { get; set; } = "Unknown Hero";
+        public string Name { get; set; }
         public int Health { get; set; } = 100;
         public int Defense { get; set; } = 30;
         public int AttackPower { get; set; } = 10;
@@ -60,7 +58,7 @@ namespace AdventureQuestRPG
 
         public override void Attack(Player player)
         {
-           //BattleSystem.Attack(this, player);
+           BattleSystem.Attack(this, player);
         }
     }
 
@@ -71,7 +69,7 @@ namespace AdventureQuestRPG
 
         public override void Attack(Player player)
         {
-            //BattleSystem.Attack(this, player);
+            BattleSystem.Attack(this, player);
         }
     }
 
@@ -82,7 +80,7 @@ namespace AdventureQuestRPG
 
         public override void Attack(Player player)
         {
-           // BattleSystem.Attack(this, player);
+            BattleSystem.Attack(this, player);
         }
     }
 }
