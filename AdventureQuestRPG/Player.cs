@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdventureQuestRPG
 {
-    internal class Player
+    public class Player
     {
         //Fields 
         private string name;
