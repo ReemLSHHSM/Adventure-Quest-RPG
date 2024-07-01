@@ -6,10 +6,6 @@ namespace AdventureQuestRPG
     {
         static void Main(string[] args)
         {
-            Player player = new Player();
-            BattleSystem battleSystem = new BattleSystem();
-            Skullton skullton = new Skullton();
-            Console.WriteLine(battleSystem.Attack(skullton,player));
             
 
         }
