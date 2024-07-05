@@ -18,44 +18,13 @@ namespace AdventureQuestRPG
             Console.WriteLine("Face formidable foes and emerge victorious!");
             Console.WriteLine("Let the quest begin...");
 
-            string playerName = getPlayerName();
+            Adventure adventure = new Adventure();
+            adventure.Start();
 
-            Player player = new Player(playerName, 100, 20, 10);
-            Monster enemy = ChooseRandomMonster();
-
-
-            BattleSystem.StartBattle(player, enemy);
-
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine("Adventure complete!");
-            Console.ForegroundColor = ConsoleColor.White;
 
         }
 
-        static string getPlayerName()
-        {
-
-            Console.WriteLine("Enter your name:");
-            string name;
-
-            while (true)
-            {
-
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                name = Console.ReadLine();
-                bool test_name = Int32.TryParse(name, out int num_name);
-                if (!String.IsNullOrEmpty(name) && test_name==false)
-                {
-                    return name;
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Your name should neither be empty nor a number!");
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                }
-            }
-        }
+       
 
         //This method will randomly choose the monster to fight the player
         static Monster ChooseRandomMonster()
