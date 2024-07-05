@@ -4,14 +4,16 @@ namespace AdventureQuestRPG
 {
 
     //player class
-    public class Player
+    public class Player : IBattleStates
     {
-        //Fields 
-        private string name;
-        private int health;
-        private int defense;
-        private int attackpower;
-        //fields are a must when creating a constructor
+
+        //Properties with default values
+        public string Name { get; set; }
+        public int Health { get; set; } = 100;
+        public int Defense { get; set; } = 30;
+        public int AttackPower { get; set; } = 10;
+        //without these values the output will be the original default values of c#
+
 
         //constructor
         public Player(string name, int health = 100, int defense = 30, int attackPower = 10)//i put them here so when the object is made it doesnt require that i add arguments
@@ -22,18 +24,9 @@ namespace AdventureQuestRPG
             AttackPower = attackPower;
 
         }
-
-
-        //Properties with default values
-        public string Name { get; set; }
-        public int Health { get; set; } = 100;
-        public int Defense { get; set; } = 30;
-        public int AttackPower { get; set; } = 10;
-
-        //without these values the output will be the original default values of c#
     }
 
-    public abstract class Monster
+    public abstract class Monster : IBattleStates
     {
         public string Name { get; set; }
         public int Health { get; set; }
@@ -82,5 +75,7 @@ namespace AdventureQuestRPG
         {
             BattleSystem.Attack(this, player);
         }
+
+
     }
 }
