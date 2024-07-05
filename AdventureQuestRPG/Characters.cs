@@ -1,4 +1,4 @@
-﻿
+﻿using AdventureQuestRPG;
 
 namespace AdventureQuestRPG
 {
@@ -7,6 +7,7 @@ namespace AdventureQuestRPG
     public class Player : IBattleStates
     {
 
+        public Inventory inventory=new Inventory();
         //Properties with default values
         public string Name { get; set; }
         public int Health { get; set; } = 100;
@@ -25,6 +26,15 @@ namespace AdventureQuestRPG
             AttackPower = attackPower;
             Location = location;
             
+        }
+
+        public void addItem(dynamic item)
+        {
+            inventory.Add_item(item);
+
+            
+
+            }
         }
     }
 
@@ -102,4 +112,4 @@ namespace AdventureQuestRPG
             BattleSystem.Attack(this, player);
         }
     }
-}
+

@@ -41,6 +41,7 @@ namespace AdventureQuestRPG
 
         public static void StartBattle(Player player, Monster enemy)
         {
+            dynamic option = land_thing();
             while (player.Health > 0 && enemy.Health > 0)
             {
 
@@ -51,12 +52,26 @@ namespace AdventureQuestRPG
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"{enemy.Name} defeated! You win!");
-
+                    if (option != "nothing")
+                    {
+                        Console.WriteLine($"{enemy.Name} dropped {option.Name} behind");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{enemy.Name} dropped nothing behind");
+                    }
+                  
                     Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine($"Your hleath is: {player.Health}\n Your defense is: {player.Defense}");
+                    Console.WriteLine($"Your hleath is: {player.Health}\nYour defense is: {player.Defense}");
 
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("=======================================");
+                    if (option != "nothing")
+                    {
+                        //call add
+                        player.addItem(option);
+
+                    }
                     break;
                 }
 
@@ -73,6 +88,41 @@ namespace AdventureQuestRPG
                     break;
                 }
             }
+
+           
+        }
+
+     
+        public static dynamic loot() {
+
+            Random random = new Random();
+         Potion potion = new Potion();
+        Weapon weapon = new Weapon();
+        Armor armor = new Armor();
+            List<object> pocket = new List<object>
+            {
+                potion,
+                "nothing",
+                weapon,
+                "nothing",
+                armor,
+                "nothing",
+                "nothing",
+
+            };
+
+           
+           
+            dynamic option =pocket[random.Next(pocket.Count())];
+            return option;
+        }
+
+        public static dynamic land_thing() {
+
+          dynamic  option = loot();
+
+            return option;
+        
         }
     }
 }

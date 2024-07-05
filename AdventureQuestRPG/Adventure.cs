@@ -20,6 +20,7 @@ namespace AdventureQuestRPG
 
         public Adventure()
         {
+            
             InitializePlayer();
             monsters = new List<Monster>
             {
@@ -92,6 +93,7 @@ namespace AdventureQuestRPG
                 {
                     case "3":
                         Console.WriteLine("Ending the game. Goodbye!");
+                        Environment.Exit(0);
                         break;
                     case "2":
                         EncounterMonster();
@@ -153,10 +155,21 @@ namespace AdventureQuestRPG
         private void EncounterMonster()
         {
             Monster monster = monsters[random.Next(monsters.Count)];
+            Inventory inventory = new Inventory();
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine($"========================================");
             Console.WriteLine($"You encounter a {monster.Name}!");
+            //use item
+            Console.WriteLine("Your statuse:");
+            Console.WriteLine($"Your health is: {player.Health}\t Your defense is: {player.Defense} \t{player.AttackPower}");
+            
+           bool result= inventory.Display();
+            if (result) {
+                Console.WriteLine("What item would you like to ues?");//this needs handeling
+            }
+      
+
             Console.WriteLine($"========================================");
             Console.ForegroundColor = ConsoleColor.Blue;
 
