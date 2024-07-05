@@ -77,8 +77,14 @@ namespace AdventureQuestRPG
             while (true)
             {
                 DisplayPlayerInfo(player);
-                
+
+                Console.ForegroundColor = ConsoleColor.Magenta;
+
+                Console.WriteLine($"========================================");
                 Console.WriteLine("Choose an action(number):\n 1- Discover a new location \n 2- Attack a monster \n 3- End the game");
+                Console.WriteLine($"========================================");
+
+                Console.ForegroundColor = ConsoleColor.Blue;
 
                 string action = Console.ReadLine().ToLower();
 
@@ -94,7 +100,10 @@ namespace AdventureQuestRPG
                         DiscoverLocation();
                         break;
                     default:
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Invalid action. Please try again.");
+                        Console.ForegroundColor = ConsoleColor.Blue;
+
                         break;
                 }
 
@@ -104,13 +113,24 @@ namespace AdventureQuestRPG
 
         private void DisplayPlayerInfo(Player palyer)
         {
+            Console.ForegroundColor = ConsoleColor.Green;
+
+            Console.WriteLine($"========================================");
             Console.WriteLine($"You are now in the {player.Location}");
+            Console.WriteLine($"========================================");
+            Console.ForegroundColor = ConsoleColor.Blue;
         }
         private void DiscoverLocation() {
 
             if (availableLocations.Count == 0)
             {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+
+                Console.WriteLine($"========================================");
                 Console.WriteLine("You have discovered all locations.");
+                Console.WriteLine($"========================================");
+                Console.ForegroundColor = ConsoleColor.Blue;
+
                 return;
             }
 
@@ -119,7 +139,12 @@ namespace AdventureQuestRPG
             availableLocations.RemoveAt(randomIndex);
             discoveredLocations.Add(location);
 
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"========================================");
             Console.WriteLine($"You have discovered a new location: {location}!");
+            Console.WriteLine($"========================================");
+            Console.ForegroundColor = ConsoleColor.Blue;
+
             player.Location = location;
 
         }
@@ -128,13 +153,24 @@ namespace AdventureQuestRPG
         private void EncounterMonster()
         {
             Monster monster = monsters[random.Next(monsters.Count)];
+
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine($"========================================");
             Console.WriteLine($"You encounter a {monster.Name}!");
+            Console.WriteLine($"========================================");
+            Console.ForegroundColor = ConsoleColor.Blue;
+
 
             BattleSystem.StartBattle(player, monster);
 
             if (player.Health <= 0)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
+
+                Console.WriteLine($"========================================");
                 Console.WriteLine("Game over! You have been defeated.");
+                Console.WriteLine($"========================================");
+                Console.ForegroundColor = ConsoleColor.Blue;
 
                 Console.WriteLine("would you like to play again? (y/n)");
 
@@ -145,7 +181,12 @@ namespace AdventureQuestRPG
 
                     if (response != "n" && response != "y")
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"========================================");
                         Console.WriteLine("Invalid input, try again:");
+                        Console.WriteLine($"========================================");
+                        Console.ForegroundColor = ConsoleColor.Blue;
+
                     }
                     else
                         break;
