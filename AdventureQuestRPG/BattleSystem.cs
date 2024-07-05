@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AdventureQuestRPG
 {
     public class BattleSystem
     {
 
-        public static int Attack(dynamic attacker,dynamic target)
+        public static int Attack(IBattleStates attacker,IBattleStates target)
         {
 
             int damage;
@@ -50,7 +51,12 @@ namespace AdventureQuestRPG
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"{enemy.Name} defeated! You win!");
+
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine($"Your hleath is: {player.Health}\n Your defense is: {player.Defense}");
+
                     Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("=======================================");
                     break;
                 }
 
@@ -63,6 +69,7 @@ namespace AdventureQuestRPG
                     Console.WriteLine("K.O");
                     Console.WriteLine("You have been defeated!");
                     Console.ForegroundColor = ConsoleColor.White;
+
                     break;
                 }
             }
