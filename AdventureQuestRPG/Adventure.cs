@@ -20,6 +20,7 @@ namespace AdventureQuestRPG
 
         public Adventure()
         {
+            
             InitializePlayer();
             monsters = new List<Monster>
             {
@@ -92,6 +93,7 @@ namespace AdventureQuestRPG
                 {
                     case "3":
                         Console.WriteLine("Ending the game. Goodbye!");
+                        Environment.Exit(0);
                         break;
                     case "2":
                         EncounterMonster();
@@ -160,19 +162,21 @@ namespace AdventureQuestRPG
             Console.WriteLine($"========================================");
             Console.ForegroundColor = ConsoleColor.Blue;
 
+           
+
+            Console.WriteLine("Starting battle...");
 
             BattleSystem.StartBattle(player, monster);
 
             if (player.Health <= 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-
                 Console.WriteLine($"========================================");
                 Console.WriteLine("Game over! You have been defeated.");
                 Console.WriteLine($"========================================");
                 Console.ForegroundColor = ConsoleColor.Blue;
 
-                Console.WriteLine("would you like to play again? (y/n)");
+                Console.WriteLine("Would you like to play again? (y/n)");
 
                 string response = "n";
                 while (true)
@@ -186,12 +190,9 @@ namespace AdventureQuestRPG
                         Console.WriteLine("Invalid input, try again:");
                         Console.WriteLine($"========================================");
                         Console.ForegroundColor = ConsoleColor.Blue;
-
                     }
                     else
                         break;
-
-
                 }
                 if (response == "y")
                 {
@@ -202,5 +203,7 @@ namespace AdventureQuestRPG
                 Environment.Exit(0);
             }
         }
+
     }
 }
+
