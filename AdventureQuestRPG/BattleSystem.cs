@@ -41,37 +41,43 @@ namespace AdventureQuestRPG
 
         public static void StartBattle(Player player, Monster enemy)
         {
-            dynamic option = land_thing();
             while (player.Health > 0 && enemy.Health > 0)
             {
-
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("Your status:");
+                Console.WriteLine($"Health: {player.Health}\tDefense: {player.Defense}\tAttack Power: {player.AttackPower}");
+
+                bool result = player.inventory.Display();
+                if (result)
+                {
+                    Console.WriteLine("What item would you like to use?");
+                    string item = Console.ReadLine();
+                    player.useItem(item);
+                }
+
                 Console.WriteLine("Player's turn:");
                 Attack(player, enemy);
                 if (enemy.Health <= 0)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"{enemy.Name} defeated! You win!");
-                    if (option != "nothing")
+
+                    dynamic option = land_thing();
+                    if (option.GetType() != typeof(string))
                     {
                         Console.WriteLine($"{enemy.Name} dropped {option.Name} behind");
+                        player.addItem(option);
                     }
                     else
                     {
                         Console.WriteLine($"{enemy.Name} dropped nothing behind");
                     }
-                  
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine($"Your hleath is: {player.Health}\nYour defense is: {player.Defense}");
 
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine($"Your health is: {player.Health}\nYour defense is: {player.Defense}");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("=======================================");
-                    if (option != "nothing")
-                    {
-                        //call add
-                        player.addItem(option);
 
-                    }
                     break;
                 }
 
@@ -84,15 +90,13 @@ namespace AdventureQuestRPG
                     Console.WriteLine("K.O");
                     Console.WriteLine("You have been defeated!");
                     Console.ForegroundColor = ConsoleColor.White;
-
                     break;
                 }
             }
-
-           
         }
 
-     
+
+
         public static dynamic loot() {
 
             Random random = new Random();
@@ -102,12 +106,12 @@ namespace AdventureQuestRPG
             List<object> pocket = new List<object>
             {
                 potion,
-                "nothing",
+              //  "nothing",
                 weapon,
-                "nothing",
+               // "nothing",
                 armor,
-                "nothing",
-                "nothing",
+               // "nothing",
+                //"nothing",
 
             };
 

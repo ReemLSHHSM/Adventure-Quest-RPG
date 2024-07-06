@@ -11,24 +11,25 @@ namespace AdventureQuestRPG
     {
 
         List<Item> Items = new List<Item>();
-
+       
         public void Add_item(Item obj)
         {
 
             Items.Add(obj);
 
         }
-
+        int armor_count = 0;
+        int potion_count = 0;
+        int weapon_count = 0;
         public bool Display()
         {
             if (Items.Count > 0) {
-                int armor_count = 0;
-                int potion_count = 0;
-                int weapon_count = 0;
-
-                dynamic armor = new Weapon();
+               
+                
+                dynamic armor = new Armor();
                 dynamic potion = new Potion();
                 dynamic weapon = new Weapon();
+               
                 Console.WriteLine("Your inventory: ");
                 foreach (Item item in Items)
                 {
@@ -70,6 +71,18 @@ namespace AdventureQuestRPG
                 return false;
             }
            
+        }
+
+        public dynamic return_list()
+        {
+            dynamic armor = new Armor();
+            dynamic potion = new Potion();
+            dynamic weapon = new Weapon();
+            //Items.Add(armor);///
+            //Items.Add(armor);////
+            //Items.Add(armor);////
+            //Items.Add(potion);///
+            return Items;
         }
     }
 }

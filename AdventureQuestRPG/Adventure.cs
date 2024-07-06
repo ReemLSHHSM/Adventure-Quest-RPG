@@ -155,19 +155,24 @@ namespace AdventureQuestRPG
         private void EncounterMonster()
         {
             Monster monster = monsters[random.Next(monsters.Count)];
-            Inventory inventory = new Inventory();
+           // Inventory inventory = new Inventory();
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine($"========================================");
             Console.WriteLine($"You encounter a {monster.Name}!");
             //use item
-            Console.WriteLine("Your statuse:");
-            Console.WriteLine($"Your health is: {player.Health}\t Your defense is: {player.Defense} \t{player.AttackPower}");
-            
-           bool result= inventory.Display();
-            if (result) {
-                Console.WriteLine("What item would you like to ues?");//this needs handeling
-            }
+            //Inventory inventory = new Inventory();
+            //Console.WriteLine("Your statuse:");
+            //Console.WriteLine($"Health: {player.Health}\tDefense: {player.Defense} \tAttack_Power: {player.AttackPower}");
+            //Console.WriteLine("your length: " + inventory.view() + ".");
+            //bool result= inventory.Display();
+            //if (result) {
+            //    Console.WriteLine("What item would you like to use?");
+            //    string item = Console.ReadLine();
+            //    player.useItem(item);
+               
+                
+            //}
       
 
             Console.WriteLine($"========================================");
