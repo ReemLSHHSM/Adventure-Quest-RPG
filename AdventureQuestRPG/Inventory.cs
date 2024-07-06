@@ -11,18 +11,24 @@ namespace AdventureQuestRPG
     {
 
         List<Item> Items = new List<Item>();
-       
+ 
         public void Add_item(Item obj)
         {
 
             Items.Add(obj);
 
         }
-        int armor_count = 0;
-        int potion_count = 0;
-        int weapon_count = 0;
+       
+
+
+       
+
         public bool Display()
         {
+            int armor_count = 0;
+            int potion_count = 0;
+            int weapon_count = 0;
+
             if (Items.Count > 0) {
                
                 
@@ -48,15 +54,15 @@ namespace AdventureQuestRPG
                     }
                     if (potion_count > 0)
                     {
-                        Console.WriteLine("Potion" + "(" + potion_count + ")" + " :" + potion.Discreption);
+                        Console.WriteLine($"Potion( { potion_count} ) : { potion.Discreption}");
                     }
                     if (weapon_count > 0)
                     {
-                        Console.WriteLine("Weapon" + "(" + weapon_count + ")" + " :" + weapon.Discreption);
+                        Console.WriteLine($"Weapon( {weapon_count} ) : {weapon.Discreption}");
 
                     }
-                    if (armor_count > 0) { 
-                        Console.WriteLine("Armor" + "(" + armor_count + ")" + " :" + armor.Discreption);
+                    if (armor_count > 0) {
+                        Console.WriteLine($"Armor( {armor_count} ) : {armor.Discreption}");
 
                     }
 

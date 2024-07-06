@@ -155,42 +155,28 @@ namespace AdventureQuestRPG
         private void EncounterMonster()
         {
             Monster monster = monsters[random.Next(monsters.Count)];
-           // Inventory inventory = new Inventory();
 
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine($"========================================");
             Console.WriteLine($"You encounter a {monster.Name}!");
-            //use item
-            //Inventory inventory = new Inventory();
-            //Console.WriteLine("Your statuse:");
-            //Console.WriteLine($"Health: {player.Health}\tDefense: {player.Defense} \tAttack_Power: {player.AttackPower}");
-            //Console.WriteLine("your length: " + inventory.view() + ".");
-            //bool result= inventory.Display();
-            //if (result) {
-            //    Console.WriteLine("What item would you like to use?");
-            //    string item = Console.ReadLine();
-            //    player.useItem(item);
-               
-                
-            //}
-      
-
             Console.WriteLine($"========================================");
             Console.ForegroundColor = ConsoleColor.Blue;
 
+           
+
+            Console.WriteLine("Starting battle...");
 
             BattleSystem.StartBattle(player, monster);
 
             if (player.Health <= 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-
                 Console.WriteLine($"========================================");
                 Console.WriteLine("Game over! You have been defeated.");
                 Console.WriteLine($"========================================");
                 Console.ForegroundColor = ConsoleColor.Blue;
 
-                Console.WriteLine("would you like to play again? (y/n)");
+                Console.WriteLine("Would you like to play again? (y/n)");
 
                 string response = "n";
                 while (true)
@@ -204,12 +190,9 @@ namespace AdventureQuestRPG
                         Console.WriteLine("Invalid input, try again:");
                         Console.WriteLine($"========================================");
                         Console.ForegroundColor = ConsoleColor.Blue;
-
                     }
                     else
                         break;
-
-
                 }
                 if (response == "y")
                 {
@@ -220,5 +203,7 @@ namespace AdventureQuestRPG
                 Environment.Exit(0);
             }
         }
+
     }
 }
+

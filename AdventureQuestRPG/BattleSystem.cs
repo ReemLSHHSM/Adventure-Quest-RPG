@@ -12,7 +12,7 @@ namespace AdventureQuestRPG
 
         public static int Attack(IBattleStates attacker,IBattleStates target)
         {
-
+            
             int damage;
             if (target.Defense > attacker.AttackPower)
             {
@@ -41,20 +41,11 @@ namespace AdventureQuestRPG
 
         public static void StartBattle(Player player, Monster enemy)
         {
+            int enemy_health=enemy.Health;
             while (player.Health > 0 && enemy.Health > 0)
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine("Your status:");
-                Console.WriteLine($"Health: {player.Health}\tDefense: {player.Defense}\tAttack Power: {player.AttackPower}");
-
-                bool result = player.inventory.Display();
-                if (result)
-                {
-                    Console.WriteLine("What item would you like to use?");
-                    string item = Console.ReadLine();
-                    player.useItem(item);
-                }
-
+               
                 Console.WriteLine("Player's turn:");
                 Attack(player, enemy);
                 if (enemy.Health <= 0)
@@ -72,6 +63,18 @@ namespace AdventureQuestRPG
                     {
                         Console.WriteLine($"{enemy.Name} dropped nothing behind");
                     }
+                    Console.WriteLine("Your status:");
+                    Console.WriteLine($"Health: {player.Health}\tDefense: {player.Defense}\tAttack Power: {player.AttackPower}");
+
+                    bool result = player.inventory.Display();
+                    if (result)
+                    {
+                        Console.WriteLine("What item would you like to use?\n");
+                        Console.WriteLine("[1]Potion\t[2]weapon\t[3]armor\n");
+                        string item = Console.ReadLine();
+                        player.useItem(item);
+                    }
+
 
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.WriteLine($"Your health is: {player.Health}\nYour defense is: {player.Defense}");
@@ -93,6 +96,7 @@ namespace AdventureQuestRPG
                     break;
                 }
             }
+            enemy.Health = enemy_health;
         }
 
 
@@ -105,13 +109,13 @@ namespace AdventureQuestRPG
         Armor armor = new Armor();
             List<object> pocket = new List<object>
             {
-                potion,
-              //  "nothing",
+                 potion,
+                "nothing",
                 weapon,
-               // "nothing",
+                "nothing",
                 armor,
-               // "nothing",
-                //"nothing",
+                "nothing",
+                "nothing",
 
             };
 
