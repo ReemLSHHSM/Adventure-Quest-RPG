@@ -17,7 +17,7 @@ namespace AdventureQuestRPG
         private Random random;
         private List<Location> availableLocations;
         private List<Location> discoveredLocations;
-
+        public bool isAvailable=false;
         public Adventure()
         {
             
@@ -41,6 +41,8 @@ namespace AdventureQuestRPG
             };
             discoveredLocations = new List<Location>();
         }
+
+
 
         private void InitializePlayer()
         {
@@ -122,7 +124,7 @@ namespace AdventureQuestRPG
             Console.WriteLine($"========================================");
             Console.ForegroundColor = ConsoleColor.Blue;
         }
-        private void DiscoverLocation() {
+        public bool DiscoverLocation() {
 
             if (availableLocations.Count == 0)
             {
@@ -132,8 +134,8 @@ namespace AdventureQuestRPG
                 Console.WriteLine("You have discovered all locations.");
                 Console.WriteLine($"========================================");
                 Console.ForegroundColor = ConsoleColor.Blue;
-
-                return;
+               // isAvailable = false;
+                return false;
             }
 
             int randomIndex = random.Next(availableLocations.Count);
@@ -146,9 +148,9 @@ namespace AdventureQuestRPG
             Console.WriteLine($"You have discovered a new location: {location}!");
             Console.WriteLine($"========================================");
             Console.ForegroundColor = ConsoleColor.Blue;
-
+           // isAvailable = true;
             player.Location = location;
-
+            return true;
         }
 
 

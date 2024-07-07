@@ -81,9 +81,9 @@ namespace AdventureQuestRPG
 
         public dynamic return_list()
         {
-            dynamic armor = new Armor();
-            dynamic potion = new Potion();
-            dynamic weapon = new Weapon();
+            //dynamic armor = new Armor();
+            //dynamic potion = new Potion();
+            //dynamic weapon = new Weapon();
             //Items.Add(armor);///
             //Items.Add(armor);////
             //Items.Add(armor);////
