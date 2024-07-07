@@ -116,7 +116,7 @@ namespace AdventureQuestRPG
 
     public class Skullton : Monster
     {
-        public Skullton(string name = "Skullton", int health = 9, int attackPower = 10, int defense = 10)
+        public Skullton(string name = "Skullton", int health = 90, int attackPower = 10, int defense = 10)
             : base(name, health, attackPower, defense) { }
 
         public override void Attack(Player player)
@@ -127,7 +127,7 @@ namespace AdventureQuestRPG
 
     public class Zombie : Monster
     {
-        public Zombie(string name = "Zombie", int health = 7, int attackPower = 10, int defense = 6)//70,10,6
+        public Zombie(string name = "Zombie", int health = 70, int attackPower = 10, int defense = 6)//70,10,6
             : base(name, health, attackPower, defense) { }
 
         public override void Attack(Player player)
@@ -138,7 +138,7 @@ namespace AdventureQuestRPG
 
     public class Goblin : Monster
     {
-        public Goblin(string name = "Goblin", int health = 8, int attackPower = 15, int defense = 5)//80,15,5
+        public Goblin(string name = "Goblin", int health = 80, int attackPower = 15, int defense = 5)//80,15,5
             : base(name, health, attackPower, defense) { }
 
         public override void Attack(Player player)
@@ -151,7 +151,7 @@ namespace AdventureQuestRPG
 
     public class Dragon : Monster
     {
-        public Dragon(string name = "Dragon", int health = 2, int attackPower = 30, int defense = 20)//200,30,20
+        public Dragon(string name = "Dragon", int health = 200, int attackPower = 30, int defense = 20)//200,30,20
             : base(name, health, attackPower, defense) { }
 
         public override void Attack(Player player)
@@ -162,7 +162,7 @@ namespace AdventureQuestRPG
 
     public class BossMonster : Monster
     {
-        public BossMonster(string name = "Boss Monster", int health = 3, int attackPower = 40, int defense = 25)//300,40,25
+        public BossMonster(string name = "Boss Monster", int health = 300, int attackPower = 40, int defense = 25)//300,40,25
             : base(name, health, attackPower, defense) { }
 
         public override void Attack(Player player)
