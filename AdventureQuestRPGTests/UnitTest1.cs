@@ -55,18 +55,54 @@ namespace AdventureQuestRPGTests
         //    Assert.True(zombie.Health == 0, "Zombie's health should be zero after losing the battle.");
         //}
 
+        private Adventure adventure;
+        private Player player;
+
+
         [Fact]
-        public void DiscoverLocation_test()
+        public void TestDiscoverNewLocation()
         {
-            // Arrange
-            Adventure adventure = new Adventure();
 
+            adventure = new Adventure();
 
-            // Act
-            bool result = adventure.DiscoverLocation();
+            // Check initial available locations count
+            int initialCount = adventure.availableLocations.Count;
 
-            // Assert
-            Assert.Equal(true, result);
+            // Discover a new location
+            bool locationDiscovered = adventure.DiscoverLocation();
+
+            // Check if a new location was discovered
+            Assert.True(locationDiscovered);
+
+            // Check if the available locations count has decreased
+            int newCount = adventure.availableLocations.Count;
+            Assert.Equal(initialCount - 1, newCount);
+
+            // Check if the discovered location list has increased
+            int discoveredCount = adventure.discoveredLocations.Count;
+            Assert.Equal(1, discoveredCount);
+        }
+
+        [Fact]
+        public void TestEncounterBossMonster()
+        {
+            adventure = new Adventure();
+            bool bossMonsterEncountered = false;
+
+            //Simulate encounters until the boss monster is found
+            for (int i = 0; i < 100; i++)
+            {
+                Monster monster = adventure.EncounterMonster();
+
+                if (monster is BossMonster)
+                {
+                    bossMonsterEncountered = true;
+                    break;
+                }
+            }
+
+            // Check if the boss monster was encountered within 100 attempts
+            Assert.True(bossMonsterEncountered);
         }
     }
 }
