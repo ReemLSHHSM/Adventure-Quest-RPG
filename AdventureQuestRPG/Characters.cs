@@ -1,4 +1,4 @@
-﻿
+﻿using AdventureQuestRPG;
 
 namespace AdventureQuestRPG
 {
@@ -7,6 +7,7 @@ namespace AdventureQuestRPG
     public class Player : IBattleStates
     {
 
+        public Inventory inventory = new Inventory();
         //Properties with default values
         public string Name { get; set; }
         public int Health { get; set; } = 100;
@@ -24,8 +25,75 @@ namespace AdventureQuestRPG
             Defense = defense;
             AttackPower = attackPower;
             Location = location;
-            
+
         }
+
+        public void addItem(Item item)
+        {
+            inventory.Add_item(item);
+
+
+
+        }
+
+        public void useItem(string name)
+        {
+            List<Item> options = inventory.return_list();
+            
+
+            while (name != "potion" && name != "weapon" && name != "armor")
+            {
+                Console.WriteLine("Item unavailable!");
+                Console.WriteLine("Please try again");
+                name = Console.ReadLine();
+            }
+
+            bool itemFound = false;
+
+            for (int i = options.Count - 1; i >= 0; i--)
+            {
+                if (options[i].Name == name)
+                {
+                    itemFound = true;
+
+                    switch (options[i].Name)
+                    {
+                        case "potion":
+                            this.Health += 20;
+                            Console.WriteLine($"Your health now is {this.Health}");
+                            options.Remove(options[i]);
+                            break;
+                        case "weapon":
+                            this.AttackPower += 30;
+                            Console.WriteLine($"Your Attack Power now is {this.AttackPower}");
+                            options.Remove(options[i]);
+                            break;
+                        case "armor":
+                            this.Defense += 20;
+                            Console.WriteLine($"Your defense now is {this.Defense}");
+                            options.Remove(options[i]);
+                            break;
+                        default:
+                            Console.WriteLine("Item not recognized.");
+                            break;
+                    }
+                }
+            }
+
+            if (!itemFound)
+            {
+                while (!itemFound)
+                {
+                    Console.WriteLine("You don't have this item");
+                    Console.WriteLine("What item do you want to use?");
+                    name = Console.ReadLine();
+
+                }
+                
+            }
+        }
+
+
     }
 
     public abstract class Monster : IBattleStates
@@ -53,13 +121,13 @@ namespace AdventureQuestRPG
 
         public override void Attack(Player player)
         {
-           BattleSystem.Attack(this, player);
+            BattleSystem.Attack(this, player);
         }
     }
 
     public class Zombie : Monster
     {
-        public Zombie(string name = "Zombie", int health = 70, int attackPower = 10, int defense = 6)
+        public Zombie(string name = "Zombie", int health = 70, int attackPower = 10, int defense = 6)//70,10,6
             : base(name, health, attackPower, defense) { }
 
         public override void Attack(Player player)
@@ -70,7 +138,7 @@ namespace AdventureQuestRPG
 
     public class Goblin : Monster
     {
-        public Goblin(string name = "Goblin", int health = 80, int attackPower = 15, int defense = 5)
+        public Goblin(string name = "Goblin", int health = 80, int attackPower = 15, int defense = 5)//80,15,5
             : base(name, health, attackPower, defense) { }
 
         public override void Attack(Player player)
@@ -83,7 +151,7 @@ namespace AdventureQuestRPG
 
     public class Dragon : Monster
     {
-        public Dragon(string name = "Dragon", int health = 200, int attackPower = 30, int defense = 20)
+        public Dragon(string name = "Dragon", int health = 200, int attackPower = 30, int defense = 20)//200,30,20
             : base(name, health, attackPower, defense) { }
 
         public override void Attack(Player player)
@@ -94,7 +162,7 @@ namespace AdventureQuestRPG
 
     public class BossMonster : Monster
     {
-        public BossMonster(string name = "Boss Monster", int health = 300, int attackPower = 40, int defense = 25)
+        public BossMonster(string name = "Boss Monster", int health = 300, int attackPower = 40, int defense = 25)//300,40,25
             : base(name, health, attackPower, defense) { }
 
         public override void Attack(Player player)
@@ -102,4 +170,5 @@ namespace AdventureQuestRPG
             BattleSystem.Attack(this, player);
         }
     }
+
 }

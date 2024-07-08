@@ -15,11 +15,12 @@ namespace AdventureQuestRPG
         public Player player;
         public List<Monster> monsters;
         private Random random;
-        private List<Location> availableLocations;
-        private List<Location> discoveredLocations;
-
+        public List<Location> availableLocations;
+        public List<Location> discoveredLocations;
+        public bool isAvailable=false;
         public Adventure()
         {
+            
             InitializePlayer();
             monsters = new List<Monster>
             {
@@ -40,6 +41,8 @@ namespace AdventureQuestRPG
             };
             discoveredLocations = new List<Location>();
         }
+
+
 
         private void InitializePlayer()
         {
@@ -92,6 +95,7 @@ namespace AdventureQuestRPG
                 {
                     case "3":
                         Console.WriteLine("Ending the game. Goodbye!");
+                        Environment.Exit(0);
                         break;
                     case "2":
                         EncounterMonster();
@@ -120,7 +124,7 @@ namespace AdventureQuestRPG
             Console.WriteLine($"========================================");
             Console.ForegroundColor = ConsoleColor.Blue;
         }
-        private void DiscoverLocation() {
+        public bool DiscoverLocation() {
 
             if (availableLocations.Count == 0)
             {
@@ -130,8 +134,8 @@ namespace AdventureQuestRPG
                 Console.WriteLine("You have discovered all locations.");
                 Console.WriteLine($"========================================");
                 Console.ForegroundColor = ConsoleColor.Blue;
-
-                return;
+               // isAvailable = false;
+                return false;
             }
 
             int randomIndex = random.Next(availableLocations.Count);
@@ -144,13 +148,13 @@ namespace AdventureQuestRPG
             Console.WriteLine($"You have discovered a new location: {location}!");
             Console.WriteLine($"========================================");
             Console.ForegroundColor = ConsoleColor.Blue;
-
+           // isAvailable = true;
             player.Location = location;
-
+            return true;
         }
 
 
-        public void EncounterMonster()
+        public Monster EncounterMonster()
         {
             Monster monster = monsters[random.Next(monsters.Count)];
 
@@ -160,19 +164,21 @@ namespace AdventureQuestRPG
             Console.WriteLine($"========================================");
             Console.ForegroundColor = ConsoleColor.Blue;
 
+           
+
+            Console.WriteLine("Starting battle...");
 
             BattleSystem.StartBattle(player, monster);
 
             if (player.Health <= 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-
                 Console.WriteLine($"========================================");
                 Console.WriteLine("Game over! You have been defeated.");
                 Console.WriteLine($"========================================");
                 Console.ForegroundColor = ConsoleColor.Blue;
 
-                Console.WriteLine("would you like to play again? (y/n)");
+                Console.WriteLine("Would you like to play again? (y/n)");
 
                 string response = "n";
                 while (true)
@@ -186,12 +192,9 @@ namespace AdventureQuestRPG
                         Console.WriteLine("Invalid input, try again:");
                         Console.WriteLine($"========================================");
                         Console.ForegroundColor = ConsoleColor.Blue;
-
                     }
                     else
                         break;
-
-
                 }
                 if (response == "y")
                 {
@@ -201,6 +204,10 @@ namespace AdventureQuestRPG
 
                 Environment.Exit(0);
             }
+
+            return monster;
         }
+
     }
 }
+
