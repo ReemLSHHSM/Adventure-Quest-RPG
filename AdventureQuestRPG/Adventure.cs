@@ -12,8 +12,8 @@ namespace AdventureQuestRPG
 
     public class Adventure
     {
-        private Player player;
-        private List<Monster> monsters;
+        public Player player;
+        public List<Monster> monsters;
         private Random random;
         private List<Location> availableLocations;
         private List<Location> discoveredLocations;
@@ -150,7 +150,7 @@ namespace AdventureQuestRPG
         }
 
 
-        private void EncounterMonster()
+        public void EncounterMonster()
         {
             Monster monster = monsters[random.Next(monsters.Count)];
 
