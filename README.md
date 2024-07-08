@@ -2,25 +2,37 @@
 
 ## Overview
 
-Welcome to AdventureQuestRPG, a console-based RPG game where you, as the player, embark on an epic quest to battle monsters and emerge victorious!
+Welcome to AdventureQuestRPG, a console-based RPG game where you, as the player, embark on an epic quest to explore new locations, battle monsters, and emerge victorious!
 
 ## Features
 
-- Encounter various types of monsters, each with their own strengths and weaknesses.
+- Explore various locations, discovering new places on your adventure.
+- Encounter various types of monsters, including a powerful boss monster, each with their own strengths and weaknesses.
 - Engage in turn-based battles using strategic attacks and defenses.
-- Experience dynamic gameplay with random monster encounters.
+- Experience dynamic gameplay with random monster encounters, location discoveries, and item drops.
+- Collect items such as potions, weapons, and armor from defeated monsters and manage your inventory.
 
 ## Gameplay
 
-1. **Battle System**:
+1. **Location Discovery**:
+   - Players can discover new locations as they explore.
+   - Each discovered location is added to the player's known locations, providing new opportunities and challenges.
+
+2. **Battle System**:
    - Players and monsters take turns attacking each other based on their attributes.
    - Damage calculation considers attack power and defense, ensuring fair battles.
+   - Defeat the boss monster to achieve a significant victory.
 
-2. **Characters**:
+3. **Characters**:
    - **Player**: Customize your hero's name and attributes (health, attack power, defense).
-   - **Monsters**: Encounter goblins, Zombie, Skullton. each with varying difficulty.
+   - **Monsters**: Encounter goblins, zombies, Skulltons, and a boss monster, each with varying difficulty.
 
-3. **Victory Conditions**:
+4. **Item Drops and Inventory Management**:
+   - Defeated monsters may drop items such as potions, weapons, or armor.
+   - Items are stored in the player's inventory.
+   - Players can choose to use a potion to increase health, equip armor to increase defense, or wield a weapon to increase attack power.
+
+5. **Victory Conditions**:
    - Defeat the monster to win the game.
    - Handle game over scenarios when the player's health drops to zero.
 
@@ -40,6 +52,8 @@ Ensure you have .NET Core SDK installed on your machine for development.
   - `Program.cs`: Entry point of the game.
   - `Characters.cs`: Defines player and monster classes.
   - `BattleSystem.cs`: Implements the battle mechanics.
+  - `LocationDiscovery.cs`: Implements the location discovery mechanics.
+  - `Inventory.cs`: Manages the player's inventory and item usage.
 - `AdventureQuestRPGTests/`: Contains unit tests to verify game functionality.
 - `README.md`: This file, providing an overview of the project.
 
@@ -50,3 +64,4 @@ Contributions are welcome! If you'd like to contribute to the AdventureQuestRPG 
 ---
 
 Enjoy your adventure in AdventureQuestRPG!
+
