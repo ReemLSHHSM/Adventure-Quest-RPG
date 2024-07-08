@@ -104,5 +104,41 @@ namespace AdventureQuestRPGTests
             // Check if the boss monster was encountered within 100 attempts
             Assert.True(bossMonsterEncountered);
         }
+
+        //[Fact]
+        //public void DiscoverLocation_ShouldUpdatePlayerLocation_WhenLocationAvailable()
+        //{
+        //    // Arrange
+        //    var adventure = new Adventure();
+        //    var player = new Player("reem");
+        //    // Act
+        //    bool discovered = adventure.DiscoverLocation();
+
+        //    // Assert
+        //    Assert.True(discovered);
+        //    Assert.NotEqual(Location.Forest, adventure.player.Location); // Assuming Forest is starting location
+        //}
+
+        //[Fact]
+        //public void TestEncounterBossMonster()
+        //{
+        //    // Arrange
+        //    var adventure = new Adventure();
+
+        //    // Act
+        //    bool encounteredBoss = false;
+        //    for (int i = 0; i < 100; i++) // Simulate multiple encounters
+        //    {
+        //        adventure.EncounterMonster();
+        //        if (adventure.monsters.Any(monster => monster is BossMonster))
+        //        {
+        //            encounteredBoss = true;
+        //            break;
+        //        }
+        //    }
+
+        //    // Assert
+        //    Assert.True(encounteredBoss, "Boss monster was not encountered in 100 attempts.");
+        //}
     }
 }

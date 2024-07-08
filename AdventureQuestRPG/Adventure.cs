@@ -12,8 +12,8 @@ namespace AdventureQuestRPG
 
     public class Adventure
     {
-        private Player player;
-        private List<Monster> monsters;
+        public Player player;
+        public List<Monster> monsters;
         private Random random;
         public List<Location> availableLocations;
         public List<Location> discoveredLocations;
