@@ -84,10 +84,7 @@ namespace AdventureQuestRPG
             //dynamic armor = new Armor();
             //dynamic potion = new Potion();
             //dynamic weapon = new Weapon();
-            //Items.Add(armor);///
-            //Items.Add(armor);////
-            //Items.Add(armor);////
-            //Items.Add(potion);///
+         
             return Items;
         }
     }

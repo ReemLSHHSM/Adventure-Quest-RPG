@@ -36,17 +36,28 @@ namespace AdventureQuestRPG
 
         public static void StartBattle(Player player, Monster enemy)
         {
-            int enemy_health=enemy.Health;
+            int enemy_health = enemy.Health;
             while (player.Health > 0 && enemy.Health > 0)
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-               
+
                 Console.WriteLine("Player's turn:");
                 Attack(player, enemy);
                 if (enemy.Health <= 0)
                 {
+                    Console.WriteLine($"Player's Level: {player.Level}");
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"{enemy.Name} defeated! You win!");
+
+
+                    Console.WriteLine("You have gained XP");
+                    player.Level++;
+                    player.Defense += player.Level * 5;
+                    player.AttackPower += player.Level * 5;
+                    if (player.AttackPower > 170 ||player.Defense>170) {
+                        player.Defense = 170;
+                        player.AttackPower = 170;
+                    }
 
                     dynamic option = land_thing();
                     if (option.GetType() != typeof(string))
@@ -71,8 +82,8 @@ namespace AdventureQuestRPG
                     }
 
 
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine($"Your health is: {player.Health}\nYour defense is: {player.Defense}");
+                    //Console.ForegroundColor = ConsoleColor.Blue;
+                   // Console.WriteLine($"Your health is: {player.Health}\nYour defense is: {player.Defense}");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("=======================================");
 

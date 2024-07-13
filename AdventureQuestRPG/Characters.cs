@@ -13,18 +13,20 @@ namespace AdventureQuestRPG
         public int Health { get; set; } = 100;
         public int Defense { get; set; } = 30;
         public int AttackPower { get; set; } = 10;
+        public int Level { get; set; } = 1;
         public Location Location { get; set; }
         //without these values the output will be the original default values of c#
 
 
         //constructor
-        public Player(string name, int health = 100, int defense = 30, int attackPower = 10, Location location = Location.Forest)//i put them here so when the object is made it doesnt require that i add arguments
+        public Player(string name, int health = 100, int defense = 30, int attackPower = 10, Location location = Location.Forest,int Level=1)//i put them here so when the object is made it doesnt require that i add arguments
         {
             Name = name;
             Health = health;
             Defense = defense;
             AttackPower = attackPower;
             Location = location;
+           this.Level = Level;
 
         }
 
@@ -52,45 +54,55 @@ namespace AdventureQuestRPG
 
             for (int i = options.Count - 1; i >= 0; i--)
             {
-                if (options[i].Name == name)
-                {
-                    itemFound = true;
-
-                    switch (options[i].Name)
-                    {
-                        case "potion":
-                            this.Health += 20;
-                            Console.WriteLine($"Your health now is {this.Health}");
-                            options.Remove(options[i]);
-                            break;
-                        case "weapon":
-                            this.AttackPower += 30;
-                            Console.WriteLine($"Your Attack Power now is {this.AttackPower}");
-                            options.Remove(options[i]);
-                            break;
-                        case "armor":
-                            this.Defense += 20;
-                            Console.WriteLine($"Your defense now is {this.Defense}");
-                            options.Remove(options[i]);
-                            break;
-                        default:
-                            Console.WriteLine("Item not recognized.");
-                            break;
-                    }
-                }
-            }
-
-            if (!itemFound)
-            {
-                while (!itemFound)
+                while (options[i].Name != name)
                 {
                     Console.WriteLine("You don't have this item");
                     Console.WriteLine("What item do you want to use?");
                     name = Console.ReadLine();
-
                 }
-                
-            }
+
+
+                    if (options[i].Name == name)
+                    {
+                        itemFound = true;
+
+                        switch (options[i].Name)
+                        {
+                            case "potion":
+                                this.Health += 20;
+                                Console.WriteLine($"Your health now is {this.Health}");
+                                options.Remove(options[i]);
+                                break;
+                            case "weapon":
+                                this.AttackPower += 30;
+                                Console.WriteLine($"Your Attack Power now is {this.AttackPower}");
+                                options.Remove(options[i]);
+                                break;
+                            case "armor":
+                                this.Defense += 20;
+                                Console.WriteLine($"Your defense now is {this.Defense}");
+                                options.Remove(options[i]);
+                                break;
+                            default:
+                                Console.WriteLine("Item not found");
+                             
+                                break;
+                        }
+                    }
+                }
+            
+
+            //if (!itemFound)
+            //{
+            //    while (!itemFound)
+            //    {
+            //        Console.WriteLine("You don't have this item");
+            //        Console.WriteLine("What item do you want to use?");
+            //        name = Console.ReadLine();
+
+            //    }
+
+            //}
         }
 
 
